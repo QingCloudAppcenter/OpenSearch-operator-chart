@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  opensearch-operator:
+  - apiVersion: v2
+    appVersion: latest_test
+    created: "2022-10-12T10:23:14.874442119Z"
+    description: The OpenSearch Operator Helm chart for Kubernetes
+    digest: 97d616bd564627d9cc990bc2fb24fd52b2d3c2117faad1ff7048eaeac7a3ec5e
+    name: opensearch-operator
+    type: application
+    urls:
+    - https://github.com/QingCloudAppcenter/OpenSearch-operator-chart/releases/download/opensearch-operator-2.0.5/opensearch-operator-2.0.5.tgz
+    version: 2.0.5
+generated: "2022-10-12T10:23:14.576900585Z"
