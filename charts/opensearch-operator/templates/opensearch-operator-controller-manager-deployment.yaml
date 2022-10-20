@@ -20,7 +20,7 @@ spec:
         - --upstream=http://127.0.0.1:8080/
         - --logtostderr=true
         - --v=10
-        image: "{{ .Values.localRegistry }}{{"/"}}{{ .Values.namespaceOverride }}{{"/"}}{{ .Values.kubeProxy.image }}:{{ .Values.kubeProxy.version }}"
+        image: "{{ .Values.localRegistry | default "docker.io"  }}{{"/"}}{{ .Values.namespaceOverride | default "nosqlpass" }}{{"/"}}{{ .Values.kubeProxy.image }}:{{ .Values.kubeProxy.version }}"
         name: kube-rbac-proxy
         ports:
         - containerPort: 8443
@@ -36,9 +36,9 @@ spec:
         - /manager
         env:
           - name: LOCAL_REGISTRY
-            value: {{ .Values.localRegistry }}
+            value: {{ .Values.localRegistry | default "docker.io" }}
           - name: NAMESPACE_OVERRIDE
-            value: {{ .Values.namespaceOverride }}
+            value: {{ .Values.namespaceOverride | default "nosqlpass" }}
           - name: OPENSEARCH_IMAGE
             value: {{ .Values.cluster.openSearch.image }}
           - name: OPENSEARCH_DASHBOARD_IMAGE
@@ -52,7 +52,7 @@ spec:
           - name: BUSYBOX_TAG
             value: {{ .Values.cluster.busybox.tag }}
 
-        image: "{{ .Values.localRegistry }}{{"/"}}{{ .Values.namespaceOverride }}{{"/"}}{{ .Values.manager.image }}:{{ .Values.manager.tag | default .Chart.AppVersion }}"
+        image: "{{ .Values.localRegistry | default "docker.io" }}{{"/"}}{{ .Values.namespaceOverride | default "nosqlpass" }}{{"/"}}{{ .Values.manager.image }}:{{ .Values.manager.tag | default .Chart.AppVersion }}"
         name: operator-controller-manager
         imagePullPolicy: "{{ .Values.pullPolicy }}"
         resources:
