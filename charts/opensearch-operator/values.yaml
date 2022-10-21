@@ -19,7 +19,7 @@ manager:
   watchNamespace:
 
 localRegistry: docker.io
-namespaceOverride: nosqlpass
+namespaceOverride: radondb
 pullPolicy: Always
 
 cluster:
