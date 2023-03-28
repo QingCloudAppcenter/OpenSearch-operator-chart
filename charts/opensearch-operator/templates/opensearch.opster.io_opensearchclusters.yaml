@@ -3917,6 +3917,8 @@ spec:
                 type: boolean
               phase:
                 type: string
+              reason:
+                type: string
               state:
                 description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
                   of cluster Important: Run "make" to regenerate code after modifying
