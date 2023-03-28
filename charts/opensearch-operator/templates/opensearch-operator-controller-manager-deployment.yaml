@@ -51,7 +51,9 @@ spec:
             value: {{ .Values.cluster.busybox.image }}
           - name: BUSYBOX_TAG
             value: {{ .Values.cluster.busybox.tag }}
-
+          - name: LOG_FORMAT
+            value: {{ .Values.logFormat | default "false" }}
+             
         image: "{{ .Values.localRegistry | default "docker.io" }}{{"/"}}{{ .Values.namespaceOverride | default "radondb" }}{{"/"}}{{ .Values.manager.image }}:{{ .Values.manager.tag | default .Chart.AppVersion }}"
         name: operator-controller-manager
         imagePullPolicy: "{{ .Values.pullPolicy }}"
