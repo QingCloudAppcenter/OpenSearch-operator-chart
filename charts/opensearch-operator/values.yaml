@@ -23,10 +23,9 @@ namespaceOverride: radondb
 pullPolicy: Always
 
 # format output log
-# - false : plaintext (default)
-# - true  : json
-logFormat: false
-
+# - plaintext (default)
+# - json
+logFormat: plaintext
 
 cluster:
   openSearch:
