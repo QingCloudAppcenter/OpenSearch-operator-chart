@@ -42,7 +42,7 @@ logstash:
   image: logstash-oss-with-opensearch-output-plugin
   tag: 8.4.0
 
-
+  
 prometheus:
   secretName: "prometheus-credentials-secret"
   # prometheus/prometheus
