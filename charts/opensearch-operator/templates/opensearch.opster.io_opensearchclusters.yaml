@@ -987,6 +987,8 @@ spec:
                     type: boolean
                   autoScaler:
                     type: boolean
+                  forceRestart:
+                    type: boolean
                   monitoring:
                     type: boolean
                   smartScaler:
