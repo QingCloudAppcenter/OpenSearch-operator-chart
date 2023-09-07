@@ -102,7 +102,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - "*"
+  - ""
   - opensearch.opster.io
   resources:
   - events

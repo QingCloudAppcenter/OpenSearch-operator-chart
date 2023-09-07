@@ -38,4 +38,23 @@ spec:
   selector:
     matchLabels:
       opster.io/exporter-monitor: "yes"
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: logstash-monitor
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/vendor: kubesphere
+    {{- include "opensearch-operator.labels" . | nindent 4 }}
+spec:
+  endpoints:
+  - path: /metrics
+    port: exporter
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      opster.io/logstash-exporter-monitor: "yes"
 {{ end }}

@@ -53,6 +53,10 @@ spec:
             value: {{ .Values.cluster.busybox.tag }}
           - name: LOG_FORMAT
             value: {{ .Values.logFormat | default "plaintext" }}
+          - name: LOGSTASH_EXPORTER_IMAGE
+            value: {{ .Values.logstashExporter.image }}
+          - name: LOGSTASH_EXPORTER_TAG
+            value: {{ .Values.logstashExporter.tag }}
              
         image: "{{ .Values.localRegistry | default "docker.io" }}{{"/"}}{{ .Values.namespaceOverride | default "radondb" }}{{"/"}}{{ .Values.manager.image }}:{{ .Values.manager.tag | default .Chart.AppVersion }}"
         name: operator-controller-manager
