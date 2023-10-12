@@ -22,6 +22,8 @@ spec:
         - --v=10
         image: "{{ .Values.localRegistry | default "docker.io"  }}{{"/"}}{{ .Values.namespaceOverride | default "radondb" }}{{"/"}}{{ .Values.kubeProxy.image }}:{{ .Values.kubeProxy.version }}"
         name: kube-rbac-proxy
+        resources:
+          {{- toYaml .Values.kubeProxy.resources | nindent 12 }}
         ports:
         - containerPort: 8443
           name: https

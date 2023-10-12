@@ -3,6 +3,13 @@ tolerations: []
 kubeProxy:
   image: kube-rbac-proxy
   version: "v0.8.0"
+  resources:
+    limits:
+      cpu: 200m
+      memory: 500Mi
+    requests:
+      cpu: 100m
+      memory: 300Mi
 manager:
   resources:
     limits:
@@ -10,7 +17,7 @@ manager:
       memory: 500Mi
     requests:
       cpu: 100m
-      memory: 350Mi
+      memory: 300Mi
   image: opensearch-operator
   ## tag default uses appVersion from Chart.yaml, to override specify tag tag: "v1.1"
   tag: "2.0.25"
