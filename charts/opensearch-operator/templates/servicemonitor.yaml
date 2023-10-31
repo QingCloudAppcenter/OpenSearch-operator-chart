@@ -17,8 +17,10 @@ metadata:
   name: opensearch-clusters-monitor
   namespace: {{ .Release.Namespace }}
   labels:
-    app.kubernetes.io/vendor: kubesphere
     {{- include "opensearch-operator.labels" . | nindent 4 }}
+    {{- if .Values.serviceMonitor.labels }}
+    {{- toYaml .Values.serviceMonitor.labels | nindent 4 }}
+    {{- end }}
 spec:
   endpoints:
   - basicAuth:

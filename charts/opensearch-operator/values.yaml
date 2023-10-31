@@ -58,3 +58,6 @@ prometheus:
   # prometheus/prometheus
   username: cHJvbWV0aGV1cw==
   password: cHJvbWV0aGV1cw==
+
+serviceMonitor:
+  labels:
