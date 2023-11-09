@@ -18,8 +18,8 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "opensearch-operator.labels" . | nindent 4 }}
-    {{- if .Values.serviceMonitor.labels }}
-    {{- toYaml .Values.serviceMonitor.labels | nindent 4 }}
+    {{- if .Values.customLabels.serviceMonitor.labels }}
+    {{- toYaml .Values.customLabels.serviceMonitor.labels | nindent 4 }}
     {{- end }}
 spec:
   endpoints:
