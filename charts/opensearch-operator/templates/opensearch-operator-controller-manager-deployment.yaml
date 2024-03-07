@@ -20,7 +20,7 @@ spec:
         - --upstream=http://127.0.0.1:8080/
         - --logtostderr=true
         - --v=10
-        image: "{{ .Values.localRegistry | default "docker.io"  }}{{"/"}}{{ .Values.namespaceOverride | default "radondb" }}{{"/"}}{{ .Values.kubeProxy.image }}:{{ .Values.kubeProxy.version }}"
+        image: "{{ default "docker.io" (default .Values.localRegistry .Values.global.imageRegistry) }}{{"/"}}{{ .Values.namespaceOverride | default "radondb" }}{{"/"}}{{ .Values.kubeProxy.image }}:{{ .Values.kubeProxy.version }}"
         name: kube-rbac-proxy
         resources:
           {{- toYaml .Values.kubeProxy.resources | nindent 12 }}
@@ -38,7 +38,7 @@ spec:
         - /manager
         env:
           - name: LOCAL_REGISTRY
-            value: {{ .Values.localRegistry | default "docker.io" }}
+            value: {{ default "docker.io" (default .Values.localRegistry .Values.global.imageRegistry) }}
           - name: NAMESPACE_OVERRIDE
             value: {{ .Values.namespaceOverride | default "radondb" }}
           - name: OPENSEARCH_IMAGE
@@ -60,7 +60,7 @@ spec:
           - name: LOGSTASH_EXPORTER_TAG
             value: {{ .Values.logstashExporter.tag }}
              
-        image: "{{ .Values.localRegistry | default "docker.io" }}{{"/"}}{{ .Values.namespaceOverride | default "radondb" }}{{"/"}}{{ .Values.manager.image }}:{{ .Values.manager.tag | default .Chart.AppVersion }}"
+        image: "{{ default "docker.io" (default .Values.localRegistry .Values.global.imageRegistry) }}{{"/"}}{{ .Values.namespaceOverride | default "radondb" }}{{"/"}}{{ .Values.manager.image }}:{{ .Values.manager.tag | default .Chart.AppVersion }}"
         name: operator-controller-manager
         imagePullPolicy: "{{ .Values.pullPolicy }}"
         resources:
