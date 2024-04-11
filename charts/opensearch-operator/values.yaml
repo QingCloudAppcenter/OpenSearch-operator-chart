@@ -30,7 +30,7 @@ manager:
 
 localRegistry: docker.io
 namespaceOverride: radondb
-pullPolicy: Always
+pullPolicy: IfNotPresent
 
 # format output log
 # - plaintext (default)
