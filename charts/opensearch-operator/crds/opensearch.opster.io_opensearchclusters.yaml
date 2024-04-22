@@ -3593,6 +3593,19 @@ spec:
                               type: string
                           type: object
                       type: object
+                    probe:
+                      properties:
+                        liveness:
+                          items:
+                            format: int32
+                            type: integer
+                          type: array
+                        readiness:
+                          items:
+                            format: int32
+                            type: integer
+                          type: array
+                      type: object
                     replicas:
                       format: int32
                       type: integer
