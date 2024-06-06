@@ -17,6 +17,7 @@ metadata:
   name: opensearch-clusters-monitor
   namespace: {{ .Release.Namespace }}
   labels:
+    app.kubernetes.io/vendor: kubesphere
     {{- include "opensearch-operator.labels" . | nindent 4 }}
     {{- if .Values.customLabels.serviceMonitor.labels }}
     {{- toYaml .Values.customLabels.serviceMonitor.labels | nindent 4 }}
