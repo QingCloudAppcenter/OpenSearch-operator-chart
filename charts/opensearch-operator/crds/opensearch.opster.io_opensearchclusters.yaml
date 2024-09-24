@@ -2150,6 +2150,8 @@ spec:
                           type: string
                       type: object
                     type: array
+                  nodePort:
+                    type: boolean
                   nodeSelector:
                     additionalProperties:
                       type: string
@@ -3594,6 +3596,8 @@ spec:
                           type: object
                       type: object
                     probe:
+                      description: 0 initialDelaySeconds 1 periodSeconds 2 timeoutSeconds
+                        3 failureThreshold
                       properties:
                         liveness:
                           items:
